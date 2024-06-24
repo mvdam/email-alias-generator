@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-const EMAIL_DOMAIN_KEY = 'eag::domain';
+const EMAIL_DOMAIN_KEY = "eag::domain";
 
 function App() {
   const [domain, setDomain] = useState(
-    window.localStorage.getItem(EMAIL_DOMAIN_KEY) ?? ''
+    window.localStorage.getItem(EMAIL_DOMAIN_KEY) ?? ""
   );
-  const [service, setService] = useState('');
+  const [service, setService] = useState("");
   const randomString = (Math.random() + 1).toString(36).substring(7);
   const email = `${service.replace(
     /\./g,
-    '-'
-  )}.${randomString}@${domain.replace(/@/g, '')}`;
+    "-"
+  )}.${randomString}@${domain.replace(/@/g, "")}`;
 
   const setEmailDomain = (value: string) => {
     setDomain(value);
@@ -23,7 +23,7 @@ function App() {
     <>
       <h1>E-mail alias generator</h1>
       <div className="input-row">
-        <label for="domain-input">E-mail domain</label>
+        <label htmlFor="domain-input">E-mail domain</label>
         <input
           id="domain-input"
           type="text"
@@ -32,7 +32,7 @@ function App() {
         />
       </div>
       <div className="input-row">
-        <label for="service-input">Service</label>
+        <label htmlFor="service-input">Service</label>
         <input
           id="service-input"
           type="text"
