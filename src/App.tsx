@@ -14,7 +14,7 @@ function App() {
     "-"
   )}.${randomString}@${domain.replace(/@/g, "")}`;
 
-  const alias = email.toLowerCase();
+  const alias = email.toLowerCase().replace(/\s/g, "");
 
   const setEmailDomain = (value: string) => {
     setDomain(value);
