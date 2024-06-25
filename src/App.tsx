@@ -40,11 +40,16 @@ function App() {
           onChange={(e) => setService(e.target.value)}
         />
       </div>
-      <div>{domain && service ? <h3>{email}</h3> : null}</div>
-
-      <button type="button" onClick={() => copyToClipboard(email)}>
-        Copy to clipboard
-      </button>
+      <div>
+        {domain && service ? (
+          <>
+            <h3>{email}</h3>
+            <button type="button" onClick={() => copyToClipboard(email)}>
+              Copy to clipboard
+            </button>
+          </>
+        ) : null}
+      </div>
     </>
   );
 }
