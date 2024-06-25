@@ -14,6 +14,8 @@ function App() {
     "-"
   )}.${randomString}@${domain.replace(/@/g, "")}`;
 
+  const alias = email.toLowerCase();
+
   const setEmailDomain = (value: string) => {
     setDomain(value);
     window.localStorage.setItem(EMAIL_DOMAIN_KEY, value);
@@ -43,8 +45,8 @@ function App() {
       <div>
         {domain && service ? (
           <>
-            <h3>{email}</h3>
-            <button type="button" onClick={() => copyToClipboard(email)}>
+            <h3>{alias}</h3>
+            <button type="button" onClick={() => copyToClipboard(alias)}>
               Copy to clipboard
             </button>
           </>
