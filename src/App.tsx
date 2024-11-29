@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import "./App.css";
 
 const EMAIL_DOMAIN_KEY = "eag::domain";
@@ -21,8 +21,12 @@ function App() {
     window.localStorage.setItem(EMAIL_DOMAIN_KEY, value);
   };
 
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+  };
+
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <h1>E-mail alias generator</h1>
       <div className="input-row">
         <label htmlFor="domain-input">E-mail domain</label>
@@ -39,6 +43,9 @@ function App() {
           id="service-input"
           type="text"
           value={service}
+          autoFocus={true}
+          autoComplete="off"
+          autoCorrect="off"
           onChange={(e) => setService(e.target.value)}
         />
       </div>
@@ -46,13 +53,13 @@ function App() {
         {domain && service ? (
           <>
             <h3>{alias}</h3>
-            <button type="button" onClick={() => copyToClipboard(alias)}>
+            <button type="submit" onClick={() => copyToClipboard(alias)}>
               Copy to clipboard
             </button>
           </>
         ) : null}
       </div>
-    </>
+    </form>
   );
 }
 
